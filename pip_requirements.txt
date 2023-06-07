@@ -1,0 +1,14 @@
+argon2-cffi==21.3.0
+argon2-cffi-bindings==21.2.0
+asgiref @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_edg6nzjrx0/croots/recipe/asgiref_1661287549316/work
+bcrypt @ file:///Users/builder/ci_310/bcrypt_1642543383457/work
+cffi @ file:///Users/builder/ci_310/cffi_1643393868399/work
+dj-database-url==0.5.0
+Django @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_066uop7vqa/croots/recipe/django_1661292540858/work
+django-environ==0.4.5
+django-filter @ file:///home/conda/feedstock_root/build_artifacts/django-filter_1655494511007/work
+psycopg2 @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_c53vfly7f7/croot/psycopg2_1666817457628/work
+psycopg2-binary @ file:///home/conda/feedstock_root/build_artifacts/psycopg2-split_1667025508416/work/psycopg2-binary
+pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
+six @ file:///home/conda/feedstock_root/build_artifacts/six_1620240208055/work
+sqlparse @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_204sy4e5t2/croot/sqlparse_1668793448973/work

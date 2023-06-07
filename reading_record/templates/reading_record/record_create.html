@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reading record forms</title>
+</head>
+<body>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">投稿</button>
+</form>
+
+<!-- 
+<table class="form-item">
+  <form enctype="multipart/form-data" method="post">
+  {% csrf_token %}
+  {{ record_form.as_table }}
+  <tr><td></td><td>
+    <div class="register-button">
+      <input type="submit" class="button" title="Register" value="Register"></input>
+    </div>
+  </td></tr>
+  </form>
+
+  </table> -->
+
+
+</body>
+</html>

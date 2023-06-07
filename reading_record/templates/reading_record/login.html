@@ -1,0 +1,46 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'reading_record/css/style.css'%}">
+
+<!DOCTYPE html>
+<html>
+<head> 
+  <meta charset="UTF-8">
+  <title>Reading record login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&display=swap" rel="stylesheet">
+  <!-- <link href="css/style.css" rel="stylesheet"> -->
+  <!-- <link href="favicon.ico" rel="shortcut icon"> -->
+</head>
+
+
+<body>
+<div class="form-wrapper">
+  <div class=login_logo>
+    <img src="../../static/reading_record/images/logo.png", alt="HOME" width="151" height="60" >
+  </div>
+  
+  <h1>Sign In</h1>
+  <form method="post" action="{% url 'Login' %}">
+    {% csrf_token %}
+    
+    <div class="form-item">
+      <label for="userid"></label>
+      <input type="text" name="userid" required="required" placeholder="UserID"></input>
+    </div>
+    <div class="form-item">
+      <label for="password"></label>
+      <input type="password" name="password" required="required" placeholder="Password"></input>
+    </div>
+    <div class="button-panel">
+      <input type="submit" class="button" title="Sign In" value="Sign In"></input>
+    </div>
+  </form>
+  <div class="form-footer">
+    <p><a href="{% url 'register' %}">Create an account</a></p>
+    <!-- <p><a href="#">Forgot password?</a></p> -->
+  </div>
+</div>
+</body>
+</html>

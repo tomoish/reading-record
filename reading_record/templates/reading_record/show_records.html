@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ja" dir="ltr">
+<head>
+<meta charset="utf-8">
+<title>Reading record HOME</title>
+<link rel="stylesheet" href='{% static "reading_record/css/style.css" %}'/>
+
+</head>
+<body id="home">
+  <header>
+    <div class="logo">
+      <img src="../../static/reading_record/images/logo.png", alt="HOME" width="176" height="70">
+    </div>
+    <nav>
+        <ul class="global-nav">
+            <li><a href="{% url 'home' %}">{{ UserID }}</a></li>
+        </ul>
+    </nav>
+</header>
+  <!-- <h1>{{ UserID }}, welcome!</h1> -->
+
+  <p class="guid"> 読書記録の投稿は
+    <a href="{% url 'record_create' %}">こちら</a>
+
+    <p class="guid"> My Pageは
+      <a href="{% url 'home' %}">こちら</a>
+
+    {% for record in record_list %}
+    {% if user == record.user %}
+    <div>
+      <h3>書名: {{ record.book_title }}</h3>
+      <p class="p1">投稿日: {{ record.posted_at }}</p>
+      <p class="p2">{{record.first_page}}p - {{record.final_page}}p</p>
+      <div class="post_text">
+        一言感想: {{ record.impression}}
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+
+  <!-- <p class="logout_guid"> ログアウトは
+  <a href="{% url 'Logout' %}">こちら</a> -->
+  </p>
+</body>
+</html>
