@@ -1,31 +1,35 @@
 <!DOCTYPE html>
 {% load static %}
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <title>Reading record forms</title>
+  <meta charset="utf-8">
+  <title>Reading record forms</title>
+  <link rel="stylesheet" href='{% static "reading_record/css/style.css" %}'/>
+  <link href="{% static 'reading_record/icon/favicon.ico' %}" rel="shortcut icon">
 </head>
-<body>
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">投稿</button>
-</form>
 
-<!-- 
-<table class="form-item">
-  <form enctype="multipart/form-data" method="post">
-  {% csrf_token %}
-  {{ record_form.as_table }}
-  <tr><td></td><td>
-    <div class="register-button">
-      <input type="submit" class="button" title="Register" value="Register"></input>
+<body id="record_create">
+
+  <header>
+    <div class="logo">
+      <img src="../../static/reading_record/images/logo.png", alt="HOME" width="176" height="70">
     </div>
-  </td></tr>
-  </form>
+    <nav>
+        <ul class="global-nav">
+            <!-- <li><a href="{% url 'home' %}">{{ UserID }}</a></li> -->
+        </ul>
+    </nav>
+  </header>
 
-  </table> -->
+
+  <div class="main">
+    <form method="post" class="post_form">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Record</button>
+  </form>
+  </div>
 
 
 </body>

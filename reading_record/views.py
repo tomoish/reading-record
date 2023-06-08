@@ -54,7 +54,7 @@ def home(request):
 
 def show_records(request):
     record_list = Record.objects.all()
-    params = {"UserID":request.user,'record_list': record_list}
+    params = {'UserID':request.user,'record_list': record_list}
     return render(request, "reading_record/show_records.html",context=params)
 
 

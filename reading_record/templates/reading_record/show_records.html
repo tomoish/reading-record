@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="ja" dir="ltr">
-<head>
-<meta charset="utf-8">
-<title>Reading record HOME</title>
-<link rel="stylesheet" href='{% static "reading_record/css/style.css" %}'/>
 
+<head>
+  <meta charset="utf-8">
+  <title>Reading record HOME</title>
+  <link rel="stylesheet" href='{% static "reading_record/css/style.css" %}'/>
+  <link href="{% static 'reading_record/icon/favicon.ico' %}" rel="shortcut icon">
 </head>
+
 <body id="home">
+
   <header>
     <div class="logo">
       <img src="../../static/reading_record/images/logo.png", alt="HOME" width="176" height="70">
@@ -17,9 +20,9 @@
             <li><a href="{% url 'home' %}">{{ UserID }}</a></li>
         </ul>
     </nav>
-</header>
-  <!-- <h1>{{ UserID }}, welcome!</h1> -->
-
+  </header>
+  
+  <div class="main show_records">
   <p class="guid"> 読書記録の投稿は
     <a href="{% url 'record_create' %}">こちら</a>
 
@@ -28,19 +31,20 @@
 
     {% for record in record_list %}
     {% if user == record.user %}
-    <div>
-      <h3>書名: {{ record.book_title }}</h3>
-      <p class="p1">投稿日: {{ record.posted_at }}</p>
-      <p class="p2">{{record.first_page}}p - {{record.final_page}}p</p>
-      <div class="post_text">
-        一言感想: {{ record.impression}}
-      </div>
+    <div class="record_list">
+      <h2 class="book_title">{{ record.book_title }}</h2>
+      <p class="posted_at">{{ record.posted_at }}</p>
+      <p class="pages">{{record.first_page}}p - {{record.final_page}}p</p>
+      <h3 class="impression">
+        <br>{{ record.impression}}
+      </h3>
     </div>
     {% endif %}
     {% endfor %}
-
+    
   <!-- <p class="logout_guid"> ログアウトは
   <a href="{% url 'Logout' %}">こちら</a> -->
   </p>
+</div>
 </body>
 </html>

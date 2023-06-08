@@ -10,8 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&display=swap" rel="stylesheet">
-    <!-- <link href="css/style.css" rel="stylesheet"> -->
-    <!-- <link href="favicon.ico" rel="shortcut icon"> -->
+    <link href="{% static 'reading_record/icon/favicon.ico' %}" rel="shortcut icon">
 </head>
 <body id="index">
 
@@ -23,29 +22,25 @@
         </div>
         <nav>
             <ul class="global-nav">
-                <li><a href="{% url 'Login' %}">Sign in</a></li>
+                <li><a href="{% url 'Login' %}" class="signin-nav">Sign in</a></li>
             </ul>
         </nav>
     </header>
 
     <div id="wrap">
+        <div class="main">
 
-        <div class="content">
-
-            <h1>Life is beautiful, Snap!Snap!</h1>
-            <p>このWebサイトは、学習用サンプルとして作成する「SNAPPERS」という
-                架空の写真家のポートフォリオサイトです。<br>
-                チュートリアル形式でHTMLとCSSを学びながら完成を目指します。
-                楽しんで作成しましょう。
-            </p>
+            <h1>Let's read a book!</h1>
+            <p class="introduction">This website is for keeping your own reading records.</p>
         <!-- <p class="btn"><a href="portfolio.html">My Portfolio</a></p>
         <p class="btn"><a href="portfolio.html">Sign in</a></p> -->
+          <div class="btn">
+            <a href="{% url 'register' %}" class="btn--orange btn-c">
+            Create Account
+            </a>
+          </div> 
         </div>
     </div>
 
-
-    <!-- <footer>
-        <small>(C)</small>
-    </footer> -->
 </body>
 </html>

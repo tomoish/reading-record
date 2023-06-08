@@ -2,10 +2,10 @@
 {% load static %}
 <html lang="ja" dir="ltr">
 <head>
-<meta charset="utf-8">
-<title>Reading record HOME</title>
-<link rel="stylesheet" href='{% static "reading_record/css/style.css" %}'/>
-
+  <meta charset="utf-8">
+  <title>Reading record HOME</title>
+  <link rel="stylesheet" href='{% static "reading_record/css/style.css" %}'/>
+  <link href="{% static 'reading_record/icon/favicon.ico' %}" rel="shortcut icon">
 </head>
 <body id="home">
   <header>
@@ -18,6 +18,7 @@
         </ul>
     </nav>
 </header>
+<div class="main">
   <h1>{{ UserID }}, welcome!</h1>
 
   <p class="guid"> 読書記録の投稿は
@@ -29,5 +30,6 @@
   <p class="guid"> ログアウトは
   <a href="{% url 'Logout' %}">こちら</a>
   </p>
+</div>
 </body>
 </html>

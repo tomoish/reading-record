@@ -1,13 +1,32 @@
 <!DOCTYPE html>
 {% load static %}
-
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <title>MyDiaryApp</title>
+  <meta charset="utf-8">
+  <title>Reading record forms complete</title>
+  <link rel="stylesheet" href='{% static "reading_record/css/style.css" %}'/>
+  <link href="{% static 'reading_record/icon/favicon.ico' %}" rel="shortcut icon">
 </head>
-<body>
-<p>日記の投稿が完了しました！</p>
-<a href="{% url 'home' %}">トップへ戻る</a>
+
+
+<body id="record_create_complete">
+
+  <header>
+    <div class="logo">
+      <img src="../../static/reading_record/images/logo.png", alt="HOME" width="176" height="70">
+    </div>
+    <nav>
+        <ul class="global-nav">
+            <!-- <li><a href="{% url 'home' %}">{{ UserID }}</a></li> -->
+        </ul>
+    </nav>
+  </header>
+
+  <div class="main record_complete">
+    <p>読書記録の投稿が完了しました！</p>
+    <a href="{% url 'home' %}">トップへ戻る</a>
+  </form>
+  </div>
+
 </body>
 </html>

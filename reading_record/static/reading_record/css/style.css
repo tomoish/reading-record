@@ -43,7 +43,6 @@ header {
     padding: 0;
     text-align: right;
     height:70px;
-    
 }
 
 .global-nav li{
@@ -67,14 +66,78 @@ header {
     background: #F596AA;
 }
 
-#index, #home{
+.signin-nav:hover {
+    background-color: #F596AA;
+    color: #fff;
+}
+
+#index, #home, #record_create, #record_create_complete {
     background-image: url(../images/background_index.jpg);
+    background-color:rgba(255,255,255,0.7);
+    background-blend-mode:lighten;
     background-repeat: no-repeat;
     
     background-position: center center;
     background-attachment: fixed;
     background-size: cover;
 }
+
+#index h1{
+    font-size: 50px;
+    text-align: center;
+}
+
+#index .introduction{
+    color: #000;
+    font-size: 30px;
+    text-align: center;
+}
+/* 
+.main {
+    width: 800px;
+    margin:0 10px;
+    float: left;
+} */
+
+.btn {
+    margin-top: 200px;
+    text-align: center;
+}
+
+.btn--orange {
+    color: #000;
+    background-color: #FEDFE1;
+    text-decoration: none;
+}
+
+.btn--orange:hover {
+    color: #fff;
+    background: #F596AA;
+}
+
+.btn-c {
+    font-size: 1.8rem;
+    /* position: relative; */
+    padding: 1.5rem 2rem 1.5rem 2rem;
+    border-radius: 100vh;
+}
+
+.btn-c:before {
+    /* font-family: 'Font Awesome 5 Free'; */
+    /* font-size: 1.6rem; */
+    /* line-height: 1; */
+    /* position: absolute; */
+    /* top: calc(50% - .8rem); */
+    right: 1rem;
+    margin: 0;
+    padding: 0;
+    /* content: '\f054'; */
+  }
+
+
+  #home .guid{
+    text-align: center;
+  }
 
 
 /* Fonts
@@ -217,7 +280,38 @@ form {
   border-bottom: 1px dotted #8c8c8c;
 }
 
+.record_list{
+    height: 150px;
+    width: 300px;
+	margin-top: 20px;
+    /* background-color: #FEDFE1; */
+    background-color: #fff;
+    margin: auto;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #FEDFE1;
+    padding: 2%;
+}
 
-#home .guid{
+.book_title {
     text-align: center;
-  }
+}
+.posted_at{
+    text-align: center;
+}
+.pages {
+    text-align: center;
+}
+
+.impression {
+    text-align: center;
+}
+
+.post_form, .record_complete {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.show_records{
+    margin-top: 30px;
+}
