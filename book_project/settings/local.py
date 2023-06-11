@@ -32,9 +32,11 @@ TEMPLATE_DIR = BASE_DIR / 'templates'
 
 STATIC_DIR = BASE_DIR / 'static'
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_DIR = BASE_DIR / 'media'
 MEDIA_URL = 'media/'
+
 
 # Static files
 # STATIC_URL = '/static/'
@@ -49,10 +51,11 @@ MEDIA_URL = 'media/'
 
 SECRET_KEY = env('SECRET_KEY')
 
-DEBUG = env('DEBUG')
+# DEBUG = env('DEBUG')
+DEBUG = env.get_value('DEBUG',bool)
 
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
-# ALLOWED_HOSTS=['localhost','127.0.0.1','0.0.0.0']
+
 
 # Application definition
 
