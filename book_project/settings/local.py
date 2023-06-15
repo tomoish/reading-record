@@ -172,4 +172,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-CSRF_TRUSTED_ORIGINS = ['https://https://django-reading-record.com']
+CSRF_TRUSTED_ORIGINS = ['https://django-reading-record.com']
