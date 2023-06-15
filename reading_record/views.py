@@ -49,13 +49,13 @@ def Logout(request):
 @login_required
 def home(request):
     # record_list = Record.objects.all()
-    params = {"UserID":request.user}
-    return render(request, "reading_record/home.html",context=params)
+    params = {'UserID':request.user}
+    return render(request, 'reading_record/home.html', context=params)
 
 def show_records(request):
     record_list = Record.objects.all()
-    params = {'UserID':request.user,'record_list': record_list}
-    return render(request, "reading_record/show_records.html",context=params)
+    params = {'UserID':request.user, 'record_list': record_list}
+    return render(request, 'reading_record/show_records.html',context=params)
 
 
 class  AccountRegistration(TemplateView):

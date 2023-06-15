@@ -1,6 +1,6 @@
 # reading_record
 
-reading_record is a web application that allows you to record your reading content.
+reading_record is a web application for recording your reading contents.
 
 ## Web
 https://django-reading-record.com
