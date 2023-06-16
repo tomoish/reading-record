@@ -4,6 +4,7 @@ from django.test import TestCase
 from django.urls import reverse, resolve
 from reading_record import views
 from reading_record.models import Account, Record
+from django.contrib.auth.models import User
 
 
 class TestViews(TestCase):
@@ -11,6 +12,10 @@ class TestViews(TestCase):
     def setUp(self):
         self.user = get_user_model().objects.create(
             username='test_user',
+        )
+
+        self.guest_user = get_user_model().objects.create(
+            username='guest',
         )
 
         self.account = Account.objects.create(
@@ -34,6 +39,11 @@ class TestViews(TestCase):
         response = self.client.get('/login/')
         self.assertEqual(response.status_code, 200)
 
+    def test_login_redirect_url(self):
+        self.client.force_login(self.user)
+        response = self.client.get('/login')
+        self.assertEqual(response.status_code, 301)
+
     def test_login(self):        
         self.client.force_login(self.user)
         response = self.client.get('/home/')
@@ -45,4 +55,12 @@ class TestViews(TestCase):
         response = self.client.get('/show_records/')
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, self.account.user.username)
+
+    def test_guest_login(self):
+        self.client.force_login(self.guest_user)
+        response = self.client.get('/guest-login/')
+        self.assertEqual(response.status_code, 302)
+        response = self.client.get('/home/')
+        self.assertEqual(response.status_code, 200)
+        
     

@@ -111,4 +111,4 @@ class RecordCreateCompleteView(TemplateView):
 def guest_login(request):
     user = User.objects.get(username='guest')
     login(request, user)
-    return redirect('home')
+    return HttpResponseRedirect(reverse('home'))
