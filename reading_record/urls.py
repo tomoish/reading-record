@@ -9,5 +9,6 @@ urlpatterns = [
     path('home/',views.home,name='home'),
     path('show_records/',views.show_records,name='show_records'),
     path('record-create/', views.RecordCreateView.as_view(), name='record_create'),
-    path('record-create/complete', views.RecordCreateCompleteView.as_view(), name='record_create_complete')
+    path('record-create/complete', views.RecordCreateCompleteView.as_view(), name='record_create_complete'),
+    path('guest-login/', views.guest_login, name = 'guest_login')
 ]

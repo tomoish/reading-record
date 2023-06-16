@@ -1,13 +1,14 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 from .forms import AccountForm, AddAccountForm, RecordForm
-from .models import Record
+from .models import Account, Record
 
 
 class IndexView(TemplateView):
@@ -43,12 +44,10 @@ def Login(request):
 def Logout(request):
     logout(request)
     return render(request, 'reading_record/index.html')
-    # return HttpResponseRedirect(reverse('Login'))
 
 #ホーム
 @login_required
 def home(request):
-    # record_list = Record.objects.all()
     params = {'UserID':request.user}
     return render(request, 'reading_record/home.html', context=params)
 
@@ -95,8 +94,6 @@ class  AccountRegistration(TemplateView):
 
         return render(request,'reading_record/register.html',context=self.params)
     
-
-
 class RecordCreateView(CreateView):
     template_name = 'reading_record/record_create.html'
     form_class = RecordForm
@@ -107,7 +104,11 @@ class RecordCreateView(CreateView):
         kwgs['user'] = self.request.user
         return kwgs
 
-
-    
 class RecordCreateCompleteView(TemplateView):
     template_name = 'reading_record/record_create_complete.html'
+
+
+def guest_login(request):
+    user = User.objects.get(username='guest')
+    login(request, user)
+    return redirect('home')
