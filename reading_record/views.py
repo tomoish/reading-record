@@ -1,21 +1,33 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView
+from django.contrib.auth.views import LoginView
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-from .forms import AccountForm, AddAccountForm, RecordForm
+from .forms import AccountForm, AddAccountForm, RecordForm, LoginForm
 from .models import Account, Record
 
 
 class IndexView(TemplateView):
     template_name = 'reading_record/index.html'
 
-# class LoginView(TemplateView):
-#     template_name = 'reading_record/login.html'
+class MyLoginView(LoginView):
+    template_name = 'reading_record/login.html'
+    form_class = LoginForm
+
+class HomeView(LoginRequiredMixin, TemplateView):
+    template_name = 'reading_record/home.html'
+    login_url = 'login/'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['UserID'] = self.request.user
+        return context
 
 #ログイン
 def Login(request):
@@ -46,10 +58,10 @@ def Logout(request):
     return render(request, 'reading_record/index.html')
 
 #ホーム
-@login_required
-def home(request):
-    params = {'UserID':request.user}
-    return render(request, 'reading_record/home.html', context=params)
+# @login_required
+# def home(request):
+#     params = {'UserID':request.user}
+#     return render(request, 'reading_record/home.html', context=params)
 
 def show_records(request):
     record_list = Record.objects.all()

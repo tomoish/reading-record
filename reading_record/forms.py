@@ -1,5 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import AuthenticationForm
+
 from .models import Account, Record
 
 # create form class
@@ -10,7 +12,7 @@ class AccountForm(forms.ModelForm):
     class Meta():
         model = User
         fields = ('username','email','password')
-        labels = {'username':"userID",'email':"mail"}
+        labels = {'username':"username",'email':"mail"}
         help_texts = {
             'username': None,
         }
@@ -43,3 +45,6 @@ class RecordForm(forms.ModelForm):
         if commit:
             record_object.save()
         return record_object
+    
+class LoginForm(AuthenticationForm):
+    pass

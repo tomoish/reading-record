@@ -37,6 +37,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_DIR = BASE_DIR / 'media'
 MEDIA_URL = 'media/'
 
+LOGIN_URL = '/login'
+LOGIN_REDIRECT_URL = '/home'
+
 
 # Static files
 # STATIC_URL = '/static/'
