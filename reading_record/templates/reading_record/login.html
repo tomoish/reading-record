@@ -25,7 +25,6 @@
   <form enctype="multipart/form-data" method="post">
     {% csrf_token %}
     {{ form.as_table }}
-    <!-- {{ add_account_form.as_table }} -->
     <tr><td></td><td>
       <div class="register-button">
         <input type="submit" class="button" title="Sign In" value="Sign In"></input>
@@ -34,25 +33,6 @@
     </td></tr>
     </form>
   </table>
-  <!-- <form method="post" action="{% url 'Login' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-
-    {{ form.non_field_errors }}
-    <div class="form-item">
-      {{ form.username.errors }}
-      <label for="{{ form.username.id_for_label }}">UserID: {{ form.username }}</label>
-      
-  </div>
-  <div class="form-item">
-    {{ form.password.errors }}
-    <label for="{{ form.password.id_for_label }}">Password: </label>
-    {{ form.password }}
-  </div>
-    <div class="button-panel">
-      <input type="submit" class="button" title="Sign In" value="Sign In"></input>
-    </div>
-  </form> -->
   <div class="form-footer">
     <p><a href="{% url 'register' %}">Create an account</a></p>
     <!-- <p><a href="#">Forgot password?</a></p> -->
