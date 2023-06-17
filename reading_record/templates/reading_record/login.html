@@ -21,21 +21,18 @@
   </div>
   
   <h1>Sign In</h1>
-  <form method="post" action="{% url 'Login' %}">
+  <table class="form-item">
+  <form enctype="multipart/form-data" method="post">
     {% csrf_token %}
-    
-    <div class="form-item">
-      <label for="userid"></label>
-      <input type="text" name="userid" required="required" placeholder="UserID"></input>
-    </div>
-    <div class="form-item">
-      <label for="password"></label>
-      <input type="password" name="password" required="required" placeholder="Password"></input>
-    </div>
-    <div class="button-panel">
-      <input type="submit" class="button" title="Sign In" value="Sign In"></input>
-    </div>
-  </form>
+    {{ form.as_table }}
+    <tr><td></td><td>
+      <div class="register-button">
+        <input type="submit" class="button" title="Sign In" value="Sign In"></input>
+      </div>
+
+    </td></tr>
+    </form>
+  </table>
   <div class="form-footer">
     <p><a href="{% url 'register' %}">Create an account</a></p>
     <!-- <p><a href="#">Forgot password?</a></p> -->

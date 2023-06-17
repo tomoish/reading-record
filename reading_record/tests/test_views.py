@@ -35,11 +35,11 @@ class TestViews(TestCase):
         response = self.client.post('/register/', data=data)
         self.assertEqual(response.status_code, 200)
 
-    def test_login_url(self):
+    def test_login_get(self):
         response = self.client.get('/login/')
         self.assertEqual(response.status_code, 200)
 
-    def test_login_redirect_url(self):
+    def test_login_redirect_get(self):
         self.client.force_login(self.user)
         response = self.client.get('/login')
         self.assertEqual(response.status_code, 301)

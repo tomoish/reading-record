@@ -237,7 +237,7 @@ form {
   width: 100%;
 }
 
-#register .register-button {
+.register-button {
   width: 100%;
   margin-left: -23%;
   margin-top: 20px;

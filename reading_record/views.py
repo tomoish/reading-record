@@ -1,61 +1,46 @@
 from django.shortcuts import get_object_or_404, render, redirect
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, View
 from django.views.generic.edit import CreateView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-from .forms import AccountForm, AddAccountForm, RecordForm
+from .forms import AccountForm, AddAccountForm, RecordForm, LoginForm
 from .models import Account, Record
 
 
 class IndexView(TemplateView):
     template_name = 'reading_record/index.html'
 
-# class LoginView(TemplateView):
-#     template_name = 'reading_record/login.html'
+class MyLoginView(LoginView):
+    template_name = 'reading_record/login.html'
+    form_class = LoginForm
 
-#ログイン
-def Login(request):
-    # POST
-    if request.method == 'POST':
-        ID = request.POST.get('userid')
-        Pass = request.POST.get('password')
+class HomeView(LoginRequiredMixin, TemplateView):
+    template_name = 'reading_record/home.html'
+    login_url = 'login/'
 
-        user = authenticate(request, username=ID, password=Pass)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['UserID'] = self.request.user
+        return context
 
-        if user:
-            if user.is_active:
-                login(request,user)
-                return HttpResponseRedirect(reverse('home'))
-            else:
-                return HttpResponse("アカウントが有効ではありません")
-        else:
-            return HttpResponse("ログインIDまたはパスワードが間違っています")
-    # GET
-    else:
-        return render(request, 'reading_record/login.html')
+class MyLogoutView(LogoutView):
+    template_name = 'reading_record/index.html'
 
+class ShowRecordsView(LoginRequiredMixin, TemplateView):
+    template_name = 'reading_record/show_records.html'
 
-#ログアウト
-@login_required
-def Logout(request):
-    logout(request)
-    return render(request, 'reading_record/index.html')
-
-#ホーム
-@login_required
-def home(request):
-    params = {'UserID':request.user}
-    return render(request, 'reading_record/home.html', context=params)
-
-def show_records(request):
-    record_list = Record.objects.all()
-    params = {'UserID':request.user, 'record_list': record_list}
-    return render(request, 'reading_record/show_records.html',context=params)
-
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        record_list = Record.objects.all()
+        context['UserID'] = self.request.user
+        context['record_list'] = record_list
+        return context
 
 class  AccountRegistration(TemplateView):
 
@@ -107,8 +92,9 @@ class RecordCreateView(CreateView):
 class RecordCreateCompleteView(TemplateView):
     template_name = 'reading_record/record_create_complete.html'
 
+class GuestLoginView(View):
+    def get(self,request):
+        user = User.objects.get(username='guest')
+        login(request, user)
+        return HttpResponseRedirect(reverse('home'))
 
-def guest_login(request):
-    user = User.objects.get(username='guest')
-    login(request, user)
-    return HttpResponseRedirect(reverse('home'))
