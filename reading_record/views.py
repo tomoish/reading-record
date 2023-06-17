@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, render, redirect
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, View
 from django.views.generic.edit import CreateView
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth import authenticate, login, logout
@@ -92,8 +92,9 @@ class RecordCreateView(CreateView):
 class RecordCreateCompleteView(TemplateView):
     template_name = 'reading_record/record_create_complete.html'
 
+class GuestLoginView(View):
+    def get(self,request):
+        user = User.objects.get(username='guest')
+        login(request, user)
+        return HttpResponseRedirect(reverse('home'))
 
-def guest_login(request):
-    user = User.objects.get(username='guest')
-    login(request, user)
-    return HttpResponseRedirect(reverse('home'))
