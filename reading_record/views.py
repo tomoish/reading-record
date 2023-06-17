@@ -32,45 +32,15 @@ class HomeView(LoginRequiredMixin, TemplateView):
 class MyLogoutView(LogoutView):
     template_name = 'reading_record/index.html'
 
-#ログイン
-def Login(request):
-    # POST
-    if request.method == 'POST':
-        ID = request.POST.get('userid')
-        Pass = request.POST.get('password')
+class ShowRecordsView(LoginRequiredMixin, TemplateView):
+    template_name = 'reading_record/show_records.html'
 
-        user = authenticate(request, username=ID, password=Pass)
-
-        if user:
-            if user.is_active:
-                login(request,user)
-                return HttpResponseRedirect(reverse('home'))
-            else:
-                return HttpResponse("アカウントが有効ではありません")
-        else:
-            return HttpResponse("ログインIDまたはパスワードが間違っています")
-    # GET
-    else:
-        return render(request, 'reading_record/login.html')
-
-
-#ログアウト
-@login_required
-def Logout(request):
-    logout(request)
-    return render(request, 'reading_record/index.html')
-
-#ホーム
-# @login_required
-# def home(request):
-#     params = {'UserID':request.user}
-#     return render(request, 'reading_record/home.html', context=params)
-
-def show_records(request):
-    record_list = Record.objects.all()
-    params = {'UserID':request.user, 'record_list': record_list}
-    return render(request, 'reading_record/show_records.html',context=params)
-
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        record_list = Record.objects.all()
+        context['UserID'] = self.request.user
+        context['record_list'] = record_list
+        return context
 
 class  AccountRegistration(TemplateView):
 
