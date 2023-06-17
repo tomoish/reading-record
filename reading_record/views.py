@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse, reverse_lazy
@@ -28,6 +28,9 @@ class HomeView(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
         context['UserID'] = self.request.user
         return context
+
+class MyLogoutView(LogoutView):
+    template_name = 'reading_record/index.html'
 
 #ログイン
 def Login(request):
