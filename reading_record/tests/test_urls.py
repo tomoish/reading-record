@@ -6,17 +6,6 @@ from reading_record.models import Account, Record
 
 class TestUrls(TestCase):
 
-    def setUp(self):
-        self.user = get_user_model().objects.create(
-            username='test_user',
-        )
-
-        self.account = Account.objects.create(
-            user = self.user,
-            first_name = 'test_first_name',
-            last_name = 'test_last_name'
-        )
-
     def test_index_url(self):
         view = resolve('/')
         self.assertEqual(view.func.view_class, views.IndexView)
@@ -26,8 +15,17 @@ class TestUrls(TestCase):
         self.assertEqual(view.func.view_class, views.AccountRegistration)
 
     def test_record_create_url(self):
-        self.client.force_login(self.user)
         view = resolve('/record-create/')
         self.assertEqual(view.func.view_class, views.RecordCreateView)
 
-    
+    def test_login_url(self):
+        view = resolve('/login/')
+        self.assertEqual(view.func.view_class, views.MyLoginView)
+
+    def test_home_url(self):
+        view = resolve('/home/')
+        self.assertEqual(view.func.view_class, views.HomeView)
+
+    def test_guest_login_url(self):
+        view = resolve('/guest-login/')
+        self.assertEqual(view.func.view_class, views.GuestLoginView)
