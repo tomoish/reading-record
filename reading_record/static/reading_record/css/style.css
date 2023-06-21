@@ -92,25 +92,13 @@ header {
     font-size: 30px;
     text-align: center;
 }
-/* 
-.main {
-    width: 800px;
-    margin:0 10px;
-    float: left;
-} */
 
 .btn {
     margin-top: 100px;
     text-align: center;
 }
 
-.btn--orange {
-    color: #000;
-    background-color: #FEDFE1;
-    text-decoration: none;
-}
-
-.btn--orange:hover {
+.btn-c:hover {
     color: #fff;
     background: #F596AA;
 }
@@ -120,34 +108,21 @@ header {
     /* position: relative; */
     padding: 1.5rem 2rem 1.5rem 2rem;
     border-radius: 100vh;
+    color: #000;
+    background-color: #FEDFE1;
+    text-decoration: none;
 }
 
 .btn-c:before {
-    /* font-family: 'Font Awesome 5 Free'; */
-    /* font-size: 1.6rem; */
-    /* line-height: 1; */
-    /* position: absolute; */
-    /* top: calc(50% - .8rem); */
     right: 1rem;
     margin: 0;
     padding: 0;
-    /* content: '\f054'; */
   }
 
 
-  #home .guid{
+#home .guid{
     text-align: center;
-  }
-
-
-/* Fonts
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400);
-
-/* font awesome */
-/* @import url(http://weloveiconfonts.com/api/?family=fontawesome);
-[class*="fontawesome-"]:before {
-  font-family: 'FontAwesome', sans-serif;
-} */ 
+}
 
 /* Simple Reset */
 * { margin: 0; padding: 0; box-sizing: border-box; }
