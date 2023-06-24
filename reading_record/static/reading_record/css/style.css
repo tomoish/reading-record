@@ -1,5 +1,13 @@
 @charset "utf-8";
 
+/* 
+VARIABLES
+====================================================*/
+:root {
+  --sakura: #fedfe1;
+  --white: #fff;
+}
+
 body {
   margin: 0px;
   padding: 0px;
@@ -305,7 +313,6 @@ form {
 /* loading screen */
 #loading {
   transition: all 1s;
-  /* background-color: #FEDFE1; */
   background-color: #fff;
   position: fixed;
   z-index: 9999;
@@ -322,4 +329,12 @@ form {
 .loaded {
   opacity: 0;
   visibility: hidden;
+}
+
+#loading-screen {
+  background-color: var(--sakura);
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  translate: 0 100vh;
 }
