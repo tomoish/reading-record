@@ -34,11 +34,15 @@
     {% if user == record.user %}
     <div class="record_list">
       <h2 class="book_title">{{ record.book_title }}</h2>
-      <p class="posted_at">{{ record.posted_at }}</p>
-      <p class="pages">{{record.first_page}}p - {{record.final_page}}p</p>
-      <h3 class="impression">
-        <br>{{ record.impression}}
+      <div class="record_detail">
+        <img class="thumbnail" src="https://cover.openbd.jp/9784789554428.jpg">
+        <p class="posted_at">{{ record.posted_at }}</p>
+        <p class="pages">{{record.first_page}}p - {{record.final_page}}p</p>
+        <h3 class="impression">
+          <br>{{ record.impression}}
       </h3>
+      </div>
+      
     </div>
     {% endif %}
     {% endfor %}

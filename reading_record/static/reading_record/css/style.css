@@ -273,10 +273,14 @@ form {
   border-bottom: 1px dotted #8c8c8c;
 }
 
+/* 
+show_records
+====================================================*/
+
 .record_list {
-  height: 150px;
-  width: 300px;
-  margin-top: 20px;
+  height: 300px;
+  width: 600px;
+  /* margin-top: 20px; */
   /* background-color: #FEDFE1; */
   background-color: #fff;
   margin: auto;
@@ -284,6 +288,19 @@ form {
   border-style: solid;
   border-color: #fedfe1;
   padding: 2%;
+}
+
+.record_detail {
+  height: 250px;
+  width: 500px;
+  margin: 0 auto;
+  padding: 2%;
+}
+
+
+.thumbnail {
+  height: 220px;
+  float: left;
 }
 
 .book_title {
