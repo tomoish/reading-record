@@ -27,7 +27,7 @@ class RecordForm(forms.ModelForm):
     class Meta():
         model = Record
         fields = ('book_title','isbn','date','first_page','final_page','impression',)
-        labels = {'user':'user', 'book_title':'book_title','isbn':'isbn','date':'date','first_page':'first_page','final_page':'final_page','impression':'impression',}
+        labels = {'user':'user', 'book_title':'book_title','isbn':'isbn (optional)','date':'date','first_page':'first_page','final_page':'final_page','impression':'impression',}
         widgets = {
             'date': forms.NumberInput(attrs={
                 "type": "date"
