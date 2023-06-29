@@ -2,6 +2,8 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
 
+import requests
+
 from .models import Account, Record
 
 # create form class
@@ -26,8 +28,8 @@ class AddAccountForm(forms.ModelForm):
 class RecordForm(forms.ModelForm):
     class Meta():
         model = Record
-        fields = ('book_title','date','first_page','final_page','impression',)
-        labels = {'user':'user', 'book_title':'book_title','date':'date','first_page':'first_page','final_page':'final_page','impression':'impression',}
+        fields = ('book_title','isbn','date','first_page','final_page','impression',)
+        labels = {'user':'user', 'book_title':'book_title','isbn':'isbn (optional)','date':'date','first_page':'first_page','final_page':'final_page','impression':'impression',}
         widgets = {
             'date': forms.NumberInput(attrs={
                 "type": "date"
@@ -40,6 +42,25 @@ class RecordForm(forms.ModelForm):
 
     def save(self, commit=True):
         record_object = super().save(commit=False)
+
+        # openBD api
+        if record_object.isbn is not None:
+
+            endpoint = "https://api.openbd.jp/v1/get"
+            
+            headers= {
+                
+            }
+            params={
+                "isbn":record_object.isbn
+            }
+            
+            result = requests.get(endpoint, headers=headers, params=params)
+            
+            res = result.json()
+            if res is not None and res[0] is not None:
+                record_object.thumbnail_url = res[0]["summary"]["cover"]
+                    
         if self.user:
             record_object.user = self.user
         if commit:

@@ -6,6 +6,7 @@ VARIABLES
 :root {
   --sakura: #fedfe1;
   --white: #fff;
+  --gray: #f0f0f0;
 }
 
 body {
@@ -27,6 +28,7 @@ h5,
 h6 {
   margin-top: 0;
 }
+
 img {
   vertical-align: bottom;
 }
@@ -35,6 +37,7 @@ ul {
   margin: 0;
   padding: 0;
 }
+
 /* finish reset css */
 
 header {
@@ -273,11 +276,13 @@ form {
   border-bottom: 1px dotted #8c8c8c;
 }
 
+/* 
+show_records
+====================================================*/
+
 .record_list {
-  height: 150px;
-  width: 300px;
-  margin-top: 20px;
-  /* background-color: #FEDFE1; */
+  height: 300px;
+  width: 600px;
   background-color: #fff;
   margin: auto;
   border-width: 3px;
@@ -286,16 +291,36 @@ form {
   padding: 2%;
 }
 
-.book_title {
-  text-align: center;
-}
-.posted_at {
-  text-align: center;
-}
-.pages {
-  text-align: center;
+.record_detail {
+  height: 250px;
+  width: 500px;
+  margin: 0 auto;
+  padding: 2%;
 }
 
+
+.thumbnail {
+  height: 220px;
+  float: left;
+}
+
+.gray_thumbnail {
+  height: 220px;
+  width: 149.66px;
+  background-color: var(--gray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.thumbnail-none {
+  color: #000;
+  font-size: 20px;
+}
+
+.book_title,
+.posted_at,
+.pages,
 .impression {
   text-align: center;
 }
@@ -310,7 +335,9 @@ form {
   margin-top: 30px;
 }
 
-/* loading screen */
+/* 
+loading screen
+====================================================*/
 #loading {
   transition: all 1s;
   background-color: #fff;

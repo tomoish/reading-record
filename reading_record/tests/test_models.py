@@ -63,12 +63,16 @@ class RecordModelTests(TestCase):
         username='test_user'
         date_test = datetime.datetime(2023, 4, 1).date()
         book_title = 'test_title_to_retrieve'
+        isbn = '9784150413330'
+        thumbnail_url = 'https://cover.openbd.jp/9784150413330.jpg'
         first_page = 100
         final_page = 200
         impression = 'test_impression_to_retrieve'
         record.user = self.user
         record.date = date_test
         record.book_title = book_title
+        record.isbn = isbn
+        record.thumbnail_url = thumbnail_url
         record.first_page = first_page
         record.final_page = final_page
         record.impression = impression
@@ -80,6 +84,8 @@ class RecordModelTests(TestCase):
         self.assertEqual(actual_record.user.username, username)
         self.assertEqual(actual_record.date, date_test)
         self.assertEqual(actual_record.book_title, book_title)
+        self.assertEqual(actual_record.isbn, isbn)
+        self.assertEqual(actual_record.thumbnail_url, thumbnail_url)
         self.assertEqual(actual_record.first_page, first_page)
         self.assertEqual(actual_record.final_page, final_page)
         self.assertEqual(actual_record.impression, impression)
