@@ -35,8 +35,14 @@
     <div class="record_list">
       <h2 class="book_title">{{ record.book_title }}</h2>
       <div class="record_detail">
-        <img class="thumbnail" src="{{ record.thumbnail_url }}">
-        <p class="posted_at">{{ record.posted_at }}</p>
+        {% if record.thumbnail_url is not None%}
+          <img class="thumbnail" src="{{ record.thumbnail_url }}">
+        {% else%}
+          <div class="thumbnail gray_thumbnail">
+            <p class="thumbnail-none">No data</p>
+          </div>
+        {% endif %}
+        <p class="posted_at">{{ record.date }}</p>
         <p class="pages">{{record.first_page}}p - {{record.final_page}}p</p>
         <h3 class="impression">
           <br>{{ record.impression}}

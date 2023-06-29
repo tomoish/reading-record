@@ -58,10 +58,9 @@ class RecordForm(forms.ModelForm):
             result = requests.get(endpoint, headers=headers, params=params)
             
             res = result.json()
-            if res is not None:
+            if res is not None and res[0] is not None:
                 record_object.thumbnail_url = res[0]["summary"]["cover"]
-        else:
-            record_object.thumbnail_url = 'https://cover.openbd.jp/97847.jpg'
+                    
         if self.user:
             record_object.user = self.user
         if commit:

@@ -6,6 +6,7 @@ VARIABLES
 :root {
   --sakura: #fedfe1;
   --white: #fff;
+  --gray: #f0f0f0;
 }
 
 body {
@@ -27,6 +28,7 @@ h5,
 h6 {
   margin-top: 0;
 }
+
 img {
   vertical-align: bottom;
 }
@@ -35,6 +37,7 @@ ul {
   margin: 0;
   padding: 0;
 }
+
 /* finish reset css */
 
 header {
@@ -280,8 +283,6 @@ show_records
 .record_list {
   height: 300px;
   width: 600px;
-  /* margin-top: 20px; */
-  /* background-color: #FEDFE1; */
   background-color: #fff;
   margin: auto;
   border-width: 3px;
@@ -303,16 +304,23 @@ show_records
   float: left;
 }
 
-.book_title {
-  text-align: center;
-}
-.posted_at {
-  text-align: center;
-}
-.pages {
-  text-align: center;
+.gray_thumbnail {
+  height: 220px;
+  width: 149.66px;
+  background-color: var(--gray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.thumbnail-none {
+  color: #000;
+  font-size: 20px;
+}
+
+.book_title,
+.posted_at,
+.pages,
 .impression {
   text-align: center;
 }
@@ -327,7 +335,9 @@ show_records
   margin-top: 30px;
 }
 
-/* loading screen */
+/* 
+loading screen
+====================================================*/
 #loading {
   transition: all 1s;
   background-color: #fff;
