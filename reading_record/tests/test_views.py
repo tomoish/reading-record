@@ -5,6 +5,7 @@ from django.urls import reverse, resolve
 from reading_record import views
 from reading_record.models import Account, Record
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 
 class TestViews(TestCase):
@@ -63,4 +64,16 @@ class TestViews(TestCase):
         response = self.client.get('/home/')
         self.assertEqual(response.status_code, 200)
         
-    
+    def test_post_reading_records(self):
+        self.client.force_login(self.user)
+        data = {
+            'user': self.user,
+            'book_title': 'test_book_title',
+            'isbn': '9784150413330',
+            'date': timezone.now,
+            'first_page': 12,
+            'final_page': 210,
+            'impression': 'test_impression',
+        }
+        response = self.client.post('/record-create/', data=data)
+        self.assertEqual(response.status_code, 200)
