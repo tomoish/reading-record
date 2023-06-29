@@ -2,6 +2,8 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
 
+import requests
+
 from .models import Account, Record
 
 # create form class
@@ -40,6 +42,26 @@ class RecordForm(forms.ModelForm):
 
     def save(self, commit=True):
         record_object = super().save(commit=False)
+
+        # openBD api
+        if record_object.isbn is not None:
+
+            endpoint = "https://api.openbd.jp/v1/get"
+            
+            headers= {
+                
+            }
+            params={
+                "isbn":record_object.isbn
+            }
+            
+            result = requests.get(endpoint, headers=headers, params=params)
+            
+            res = result.json()
+            if res is not None:
+                record_object.thumbnail_url = res[0]["summary"]["cover"]
+        else:
+            record_object.thumbnail_url = 'https://cover.openbd.jp/97847.jpg'
         if self.user:
             record_object.user = self.user
         if commit:

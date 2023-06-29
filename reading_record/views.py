@@ -37,7 +37,7 @@ class ShowRecordsView(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        record_list = Record.objects.all()
+        record_list = Record.objects.all().order_by('posted_at').reverse()
         context['UserID'] = self.request.user
         context['record_list'] = record_list
         return context
