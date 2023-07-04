@@ -95,6 +95,6 @@ class RecordCreateCompleteView(TemplateView):
 class GuestLoginView(View):
     def get(self,request):
         user = User.objects.get(username='guest')
-        login(request, user)
+        login(request, user, backend='django.contrib.auth.backends.ModelBackend')
         return HttpResponseRedirect(reverse('home'))
 

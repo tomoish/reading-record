@@ -41,31 +41,31 @@ class TestViews(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_login_redirect_get(self):
-        self.client.force_login(self.user)
+        self.client.force_login(self.user, backend='django.contrib.auth.backends.ModelBackend')
         response = self.client.get('/login')
         self.assertEqual(response.status_code, 301)
 
     def test_login(self):        
-        self.client.force_login(self.user)
+        self.client.force_login(self.user, backend='django.contrib.auth.backends.ModelBackend')
         response = self.client.get('/home/')
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, self.account.user.username)
 
     def test_show_records(self):        
-        self.client.force_login(self.user)
+        self.client.force_login(self.user, backend='django.contrib.auth.backends.ModelBackend')
         response = self.client.get('/show_records/')
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, self.account.user.username)
 
     def test_guest_login(self):
-        self.client.force_login(self.guest_user)
+        self.client.force_login(self.guest_user, backend='django.contrib.auth.backends.ModelBackend')
         response = self.client.get('/guest-login/')
         self.assertEqual(response.status_code, 302)
         response = self.client.get('/home/')
         self.assertEqual(response.status_code, 200)
         
     def test_post_reading_records(self):
-        self.client.force_login(self.user)
+        self.client.force_login(self.user, backend='django.contrib.auth.backends.ModelBackend')
         data = {
             'user': self.user,
             'book_title': 'test_book_title',
