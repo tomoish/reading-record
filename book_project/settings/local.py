@@ -127,8 +127,8 @@ DATABASES = {
         'NAME': env.get_value('DATABASE_DB'), 
         'USER': env.get_value('DATABASE_USER'),
         'PASSWORD': env.get_value('DATABASE_PASSWORD'),
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'HOST': env.get_value('DATABASE_HOST'),
+        'PORT': env.get_value('DATABASE_PORT'),
     }
     # 'default': env.db(),
 }
