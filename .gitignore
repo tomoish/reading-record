@@ -1,3 +1,7 @@
+# 20230707
+# Exclude files for production environment.
+*prod*
+
 # 20230507
 .DS_Store
 
