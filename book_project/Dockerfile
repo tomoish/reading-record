@@ -45,6 +45,7 @@ RUN groupadd -g "${GROUP_ID}" "${USER_NAME}" && \
 ENV HOME=/home/app
 ENV APP_HOME=/home/app/web
 RUN mkdir $APP_HOME
+RUN mkdir $APP_HOME/static
 WORKDIR $APP_HOME
 
 # install dependencies
