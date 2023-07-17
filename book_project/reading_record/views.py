@@ -89,8 +89,18 @@ class RecordCreateView(CreateView):
         kwgs['user'] = self.request.user
         return kwgs
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['UserID'] = self.request.user
+        return context
+    
 class RecordCreateCompleteView(TemplateView):
     template_name = 'reading_record/record_create_complete.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['UserID'] = self.request.user
+        return context
 
 class GuestLoginView(View):
     def get(self,request):
