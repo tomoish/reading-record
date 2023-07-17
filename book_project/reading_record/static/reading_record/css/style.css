@@ -97,6 +97,8 @@ header {
   align-items: center;
 }
 
+
+
 .sign-in {
   display: flex;
   border-radius: 100vh;
@@ -166,6 +168,10 @@ header {
   background-size: cover;
 }
 
+/* 
+header
+====================================================*/
+
 #index h1 {
   font-size: 50px;
   text-align: center;
@@ -220,7 +226,9 @@ body {
   font: 400 87.5%/1.5em "Open Sans", sans-serif;
 }
 
-/* Form Layout */
+/* 
+Form Layout  in login, register 
+====================================================*/
 
 .login-logo {
   width: 338px;
@@ -337,6 +345,10 @@ form {
 
 .form-footer a:hover {
   border-bottom: 1px dotted #8c8c8c;
+}
+
+.register-success {
+  line-height: 0.8;
 }
 
 /* 
