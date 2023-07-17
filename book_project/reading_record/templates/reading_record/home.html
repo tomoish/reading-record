@@ -1,36 +1,59 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="ja" dir="ltr">
-<head>
-  <meta charset="utf-8">
-  <title>Reading record HOME</title>
-  <link rel="stylesheet" href='{% static "reading_record/css/style.css" %}'/>
+<html>
+<head> 
+  <meta charset="UTF-8">
+  <title>{{UserID}} - Reading Record</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'reading_record/css/style.css'%}">
+  <script src="{% static 'reading_record/js/script.js' %}"></script>
   <link href="{% static 'reading_record/icon/favicon.ico' %}" rel="shortcut icon">
 </head>
 <body id="home">
-  <header>
-    <div class="logo">
-      <img src="../../static/reading_record/images/logo.png", alt="HOME" width="176" height="70">
+
+<header>
+  <nav class="header-nav container">
+    <div>
+      <img src="../../static/reading_record/images/logo.png", alt="HOME" width="131" height="52">
     </div>
-    <nav>
-        <ul class="global-nav">
-            <li><a href="{% url 'home' %}">{{ UserID }}</a></li>
-        </ul>
-    </nav>
+    <div>
+      <a href="{% url 'home' %}" class="sign-in flex text-lg font-bold ">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="6" r="4"/><path d="M20 17.5c0 2.485 0 4.5-8 4.5s-8-2.015-8-4.5S7.582 13 12 13s8 2.015 8 4.5Z"/></g></svg>
+        {{UserID}}</a>
+    </div>
+  </nav>
 </header>
-<div class="main">
+
+<div>
   <h1>{{ UserID }}, welcome!</h1>
 
-  <p class="guid"> 読書記録の投稿は
-    <a href="{% url 'record_create' %}">こちら</a>
+  <div class="my-page">
+    <div class="my-page-box">
+      <a href="{% url 'record_create' %}" class="btn-my-page">
+        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 14 14"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 12.5a2.72 2.72 0 0 0 0-4a2.72 2.72 0 0 0-4 0c-1 1-1 5-1 5s4 0 5-1Z"/><path d="M12.92 1.08a2 2 0 0 0-2.64-.15L4.5 5l-.71 2.64a2.87 2.87 0 0 1 1.71.86a2.87 2.87 0 0 1 .86 1.71L9 9.5l4.07-5.78a2 2 0 0 0-.15-2.64ZM.5 13.5l3.25-3.25"/></g></svg>
+        <br>
+        Post a record
+      </a>
+    </div>
+    <div class="my-page-box">
+      <a href="{% url 'show_records' %}" class="btn-my-page">
+        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M20 4H4a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1ZM4 2a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h16a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3H4Zm2 5h2v2H6V7Zm5 0a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2h-6Zm-3 4H6v2h2v-2Zm2 1a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2h-6a1 1 0 0 1-1-1Zm-2 3H6v2h2v-2Zm2 1a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2h-6a1 1 0 0 1-1-1Z" clip-rule="evenodd"/></svg>
+        <br>
+        See the records
+      </a>
+    </div>
+  </div>
 
-    <p class="guid"> 読書記録一覧は
-      <a href="{% url 'show_records' %}">こちら</a>
+  <div class="btn">
+    <a href="{% url 'Logout' %}" class="btn-c">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M6 2a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3H6zm10.293 5.293a1 1 0 0 1 1.414 0l4 4a1 1 0 0 1 0 1.414l-4 4a1 1 0 0 1-1.414-1.414L18.586 13H10a1 1 0 1 1 0-2h8.586l-2.293-2.293a1 1 0 0 1 0-1.414z" clip-rule="evenodd"/></svg>
+      Logout
+    </a>
+  </div> 
 
-  <p class="guid"> ログアウトは
-  <a href="{% url 'Logout' %}">こちら</a>
-  </p>
 </div>
 </body>
 </html>

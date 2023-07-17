@@ -2,34 +2,54 @@
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<head>
-  <meta charset="utf-8">
-  <title>Reading record forms</title>
-  <link rel="stylesheet" href='{% static "reading_record/css/style.css" %}'/>
-  <link href="{% static 'reading_record/icon/favicon.ico' %}" rel="shortcut icon">
-</head>
+  <head> 
+    <meta charset="UTF-8">
+    <title>{{UserID}} - Record form</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'reading_record/css/style.css'%}">
+    <script src="{% static 'reading_record/js/script.js' %}"></script>
+    <link href="{% static 'reading_record/icon/favicon.ico' %}" rel="shortcut icon">
+  </head>
 
 
 <body id="record_create">
 
   <header>
-    <div class="logo">
-      <img src="../../static/reading_record/images/logo.png", alt="HOME" width="176" height="70">
-    </div>
-    <nav>
-        <ul class="global-nav">
-            <!-- <li><a href="{% url 'home' %}">{{ UserID }}</a></li> -->
-        </ul>
+    <nav class="header-nav container">
+      <div>
+        <img src="../../static/reading_record/images/logo.png", alt="HOME" width="131" height="52">
+      </div>
+      <div>
+        <a href="{% url 'home' %}" class="sign-in flex text-lg font-bold ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="6" r="4"/><path d="M20 17.5c0 2.485 0 4.5-8 4.5s-8-2.015-8-4.5S7.582 13 12 13s8 2.015 8 4.5Z"/></g></svg>
+          {{UserID}}</a>
+      </div>
     </nav>
   </header>
 
+  <div class="form-wrapper2">
+    <table class="form-item2">
+      <form enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        {{ form.as_table }}
+        <tr><td></td><td>
+          <div class="register-button">
+            <input type="submit" class="button" title="Record" value="Record"></input>
+          </div>
+        </td></tr>
+      </form>
+    </table>
+    <div class="form-footer2">
+    </div>
+  </div>
 
-  <div class="main">
-    <form method="post" class="post_form">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit">Record</button>
-  </form>
+  <div class="abtn footer-btn">
+    <a href="{% url 'home' %}" class="abtn-c">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="m2.87 7.75l1.97 1.97a.75.75 0 1 1-1.06 1.06L.53 7.53L0 7l.53-.53l3.25-3.25a.75.75 0 0 1 1.06 1.06L2.87 6.25h9.88a3.25 3.25 0 0 1 0 6.5h-2a.75.75 0 0 1 0-1.5h2a1.75 1.75 0 1 0 0-3.5H2.87Z" clip-rule="evenodd"/></svg>
+      Back to my page
+    </a>
   </div>
 
 

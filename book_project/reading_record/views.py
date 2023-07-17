@@ -1,5 +1,7 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import get_object_or_404, render, redirect
-from django.views.generic import TemplateView, View
+from django.views.generic import TemplateView, View, ListView
 from django.views.generic.edit import CreateView
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth import authenticate, login, logout
@@ -32,7 +34,7 @@ class HomeView(LoginRequiredMixin, TemplateView):
 class MyLogoutView(LogoutView):
     template_name = 'reading_record/index.html'
 
-class ShowRecordsView(LoginRequiredMixin, TemplateView):
+class ShowRecordsView(LoginRequiredMixin, ListView):
     template_name = 'reading_record/show_records.html'
 
     def get_context_data(self, **kwargs):
@@ -41,6 +43,16 @@ class ShowRecordsView(LoginRequiredMixin, TemplateView):
         context['UserID'] = self.request.user
         context['record_list'] = record_list
         return context
+    
+    def get_queryset(self):
+        query = self.request.GET.get('query')
+        if query:
+            record_list = Record.objects.filter(
+                book_title__icontains=query).order_by('date').reverse()
+        else:
+            record_list = Record.objects.all().order_by('date').reverse()
+        return record_list
+        # return super().get_queryset()
 
 class  AccountRegistration(TemplateView):
 
@@ -89,8 +101,18 @@ class RecordCreateView(CreateView):
         kwgs['user'] = self.request.user
         return kwgs
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['UserID'] = self.request.user
+        return context
+    
 class RecordCreateCompleteView(TemplateView):
     template_name = 'reading_record/record_create_complete.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['UserID'] = self.request.user
+        return context
 
 class GuestLoginView(View):
     def get(self,request):
