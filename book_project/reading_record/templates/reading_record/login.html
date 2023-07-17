@@ -4,7 +4,7 @@
 <html>
 <head> 
   <meta charset="UTF-8">
-  <title>Reading record login</title>
+  <title>Account Login</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&display=swap" rel="stylesheet">
@@ -12,30 +12,38 @@
   <link href="{% static 'reading_record/icon/favicon.ico' %}" rel="shortcut icon">
 </head>
 
-
 <body>
-<div class="form-wrapper">
-  <div class=login_logo>
-    <img src="../../static/reading_record/images/logo.png", alt="HOME" width="151" height="60" >
-  </div>
-  
-  <h1>Sign In</h1>
-  <table class="form-item">
-  <form enctype="multipart/form-data" method="post">
-    {% csrf_token %}
-    {{ form.as_table }}
-    <tr><td></td><td>
-      <div class="register-button">
-        <input type="submit" class="button" title="Sign In" value="Sign In"></input>
-      </div>
 
-    </td></tr>
-    </form>
-  </table>
-  <div class="form-footer">
-    <p><a href="{% url 'register' %}">Create an account</a></p>
-    <!-- <p><a href="#">Forgot password?</a></p> -->
+  <header>
+    <nav class="header-nav container">
+      <div>
+        <img src="../../static/reading_record/images/logo.png", alt="HOME" width="131" height="52">
+      </div>
+    </nav>
+  </header>
+
+  <div class="form-wrapper">
+    <div class=login_logo>
+      <img src="../../static/reading_record/images/logo.png", alt="HOME" width="151" height="60" >
+    </div>
+    
+    <h1>Sign In</h1>
+    <table class="form-item">
+    <form enctype="multipart/form-data" method="post">
+      {% csrf_token %}
+      {{ form.as_table }}
+      <tr><td></td><td>
+        <div class="register-button">
+          <input type="submit" class="button" title="Sign In" value="Sign In"></input>
+        </div>
+
+      </td></tr>
+      </form>
+    </table>
+    <div class="form-footer">
+      <p><a href="{% url 'register' %}">Create an account</a></p>
+      <!-- <p><a href="#">Forgot password?</a></p> -->
+    </div>
   </div>
-</div>
 </body>
 </html>
