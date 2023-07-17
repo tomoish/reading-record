@@ -38,16 +38,78 @@ ul {
   padding: 0;
 }
 
+a {
+  outline: none;
+  text-decoration: none;
+  }
+  a:link { color: #000; }
+  a:visited { color: #000; }
+  a:active { color: #000; }
+
 /* finish reset css */
 
+
+/* 
+header
+====================================================*/
+
 header {
-  width: 100%;
-  height: 70px;
-  margin: 0 auto;
+  background-color: rgb(254 226 226);
+  padding: 0.5rem/* 8px */;
 }
 
-.logo {
-  float: left;
+
+.container {
+  width: 100%;
+}
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+
+  align-items: center;
+}
+
+.sign-in {
+  display: flex;
+  border-radius: 100vh;
+  padding: 0.5rem/* 8px */;
+  font-weight: 700;
+  font-size: 1.125rem/* 18px */;
+  line-height: 1.75rem/* 28px */;
+}
+
+.sign-in:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
+  color: #fff;
 }
 
 * {
