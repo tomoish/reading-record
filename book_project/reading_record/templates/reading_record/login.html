@@ -12,6 +12,7 @@
   <link href="{% static 'reading_record/icon/favicon.ico' %}" rel="shortcut icon">
 </head>
 
+
 <body>
 
   <header>
@@ -22,28 +23,28 @@
     </nav>
   </header>
 
-  <div class="form-wrapper">
-    <div class=login_logo>
-      <img src="../../static/reading_record/images/logo.png", alt="HOME" width="151" height="60" >
-    </div>
-    
-    <h1>Sign In</h1>
-    <table class="form-item">
-    <form enctype="multipart/form-data" method="post">
-      {% csrf_token %}
-      {{ form.as_table }}
-      <tr><td></td><td>
-        <div class="register-button">
-          <input type="submit" class="button" title="Sign In" value="Sign In"></input>
-        </div>
-
-      </td></tr>
-      </form>
-    </table>
-    <div class="form-footer">
-      <p><a href="{% url 'register' %}">Create an account</a></p>
-      <!-- <p><a href="#">Forgot password?</a></p> -->
-    </div>
+<div class="form-wrapper">
+  <div class="login-logo">
+    <img src="../../static/reading_record/images/logo.png", alt="HOME" width="151" height="60" >
   </div>
+  
+  <h1>Sign In</h1>
+  <table class="form-item">
+  <form enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+    {{ form.as_table }}
+    <tr><td></td><td>
+      <div class="register-button">
+        <input type="submit" class="button" title="Sign In" value="Sign In"></input>
+      </div>
+
+    </td></tr>
+    </form>
+  </table>
+  <div class="form-footer">
+    <p><a href="{% url 'register' %}">Create an account</a></p>
+    <!-- <p><a href="#">Forgot password?</a></p> -->
+  </div>
+</div>
 </body>
 </html>

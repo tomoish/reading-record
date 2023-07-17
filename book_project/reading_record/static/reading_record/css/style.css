@@ -152,6 +152,7 @@ header {
 }
 
 #index,
+#login,
 #home,
 #record_create,
 #record_create_complete {
@@ -221,14 +222,14 @@ body {
 
 /* Form Layout */
 
-.login_logo {
-  width: 370px;
+.login-logo {
+  width: 338px;
 
   /* margin: 0, auto; */
   /* display: block; */
 }
 
-.login_logo img {
+.login-logo img {
   margin-left: 25%;
   margin-right: 25%;
   margin-top: 10px;
