@@ -1,24 +1,32 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="ja" dir="ltr">
-<head>
-  <meta charset="utf-8">
-  <title>Reading record HOME</title>
-  <link rel="stylesheet" href='{% static "reading_record/css/style.css" %}'/>
+<html>
+<head> 
+  <meta charset="UTF-8">
+  <title>{{UserID}} - Reading Record</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'reading_record/css/style.css'%}">
+  <script src="{% static 'reading_record/js/script.js' %}"></script>
   <link href="{% static 'reading_record/icon/favicon.ico' %}" rel="shortcut icon">
 </head>
 <body id="home">
-  <header>
-    <div class="logo">
-      <img src="../../static/reading_record/images/logo.png", alt="HOME" width="176" height="70">
+
+<header>
+  <nav class="header-nav container">
+    <div>
+      <img src="../../static/reading_record/images/logo.png", alt="HOME" width="131" height="52">
     </div>
-    <nav>
-        <ul class="global-nav">
-            <li><a href="{% url 'home' %}">{{ UserID }}</a></li>
-        </ul>
-    </nav>
+    <div>
+      <a href="{% url 'home' %}" class="sign-in flex text-lg font-bold ">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="6" r="4"/><path d="M20 17.5c0 2.485 0 4.5-8 4.5s-8-2.015-8-4.5S7.582 13 12 13s8 2.015 8 4.5Z"/></g></svg>
+        {{UserID}}</a></li>
+    </div>
+  </nav>
 </header>
+
 <div class="main">
   <h1>{{ UserID }}, welcome!</h1>
 
