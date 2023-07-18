@@ -75,6 +75,16 @@ class RecordUpdateView(UpdateView):
     
     def get_success_url(self):
         return reverse('detail', kwargs={'pk': self.object.pk})
+    
+class RecordDeleteView(DeleteView):
+    model = Record
+    template_name = 'reading_record/record_delete.html'
+    success_url = reverse_lazy('show_records')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['UserID'] = self.request.user
+        return context
 
 class  AccountRegistration(TemplateView):
 

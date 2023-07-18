@@ -13,4 +13,5 @@ urlpatterns = [
     path('detail/<int:pk>/',views.RecordDetail.as_view(),name='detail'),
     path('guest-login/', views.GuestLoginView.as_view(), name = 'guest_login'),
     path('update/<int:pk>/',views.RecordUpdateView.as_view(),name='update'),
+    path('delete/<int:pk>/',views.RecordDeleteView.as_view(),name='delete'),
 ]
