@@ -1,7 +1,7 @@
 from typing import Any
 from django.db.models.query import QuerySet
 from django.shortcuts import get_object_or_404, render, redirect
-from django.views.generic import TemplateView, View, ListView
+from django.views.generic import TemplateView, View, ListView, DetailView, DeleteView, UpdateView
 from django.views.generic.edit import CreateView
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth import authenticate, login, logout
@@ -52,7 +52,17 @@ class ShowRecordsView(LoginRequiredMixin, ListView):
         else:
             record_list = Record.objects.all().order_by('date').reverse()
         return record_list
-        # return super().get_queryset()
+
+class RecordDetail(LoginRequiredMixin, DetailView):
+    model = Record
+    context_object_name = 'record_detail'
+    template_name = 'reading_record/record_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['UserID'] = self.request.user
+        return context
+    
 
 class  AccountRegistration(TemplateView):
 

@@ -10,5 +10,6 @@ urlpatterns = [
     path('show_records/',views.ShowRecordsView.as_view(),name='show_records'),
     path('record-create/', views.RecordCreateView.as_view(), name='record_create'),
     path('record-create/complete', views.RecordCreateCompleteView.as_view(), name='record_create_complete'),
+    path('detail/<int:pk>/',views.RecordDetail.as_view(),name='detail'),
     path('guest-login/', views.GuestLoginView.as_view(), name = 'guest_login'),
 ]

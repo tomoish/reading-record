@@ -46,7 +46,6 @@
     <form action="#" method="get" class="search-form-006">
       <label>
         <input name="query" value="{{ request.GET.query }}" type="text" placeholder="Input book title"/>
-          <!-- <input type="text" placeholder="Input book title"> -->
       </label>
       <button type="submit" aria-label="Search"></button>
     </form>
@@ -54,6 +53,7 @@
     {% for record in object_list %}
     {% if user == record.user %}
     <div class="record_list">
+      <a href="/detail/{{ record.id }}">詳細</a>
       <h2 class="book_title">{{ record.book_title }}</h2>
       <div class="record_detail">
         {% if record.thumbnail_url is not None%}
