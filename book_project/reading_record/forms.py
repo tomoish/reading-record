@@ -60,7 +60,11 @@ class RecordForm(forms.ModelForm):
             res = result.json()
             if res is not None and res[0] is not None:
                 record_object.thumbnail_url = res[0]['summary']['cover']
-                    
+            else:
+                record_object.thumbnail_url = None
+        else:
+            record_object.thumbnail_url = None
+
         if self.user:
             record_object.user = self.user
         if commit:
