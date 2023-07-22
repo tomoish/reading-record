@@ -2,7 +2,13 @@
 
 ![reading-record logo](book_project/reading_record/static/reading_record/images/logo.png)
 
-[![Technologies Used](https://skillicons.dev/icons?i=python,django,html,css,js,postgres,nginx,docker,aws)](https://skillicons.dev)
+<!-- [![Technologies Used](https://skillicons.dev/icons?i=python,django,html,css,js,postgres,nginx,docker,aws)](https://skillicons.dev) -->
+
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=python,django,html,css,js,postgres,nginx,docker,aws" />
+  </a>
+</p>
 
 reading-record is a web application for recording your reading contents.
 
