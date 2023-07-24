@@ -1,13 +1,10 @@
-from typing import Any
-from django.db.models.query import QuerySet
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import render
 from django.views.generic import TemplateView, View, ListView, DetailView, DeleteView, UpdateView
 from django.views.generic.edit import CreateView
 from django.contrib.auth.views import LoginView, LogoutView
-from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponseRedirect, HttpResponse
+from django.contrib.auth import login
+from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
 
