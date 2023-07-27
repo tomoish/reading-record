@@ -2,55 +2,84 @@
 
 <!DOCTYPE html>
 <html>
-<head> 
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Reading Record</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'reading_record/css/style.css'%}">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'reading_record/css/style.css'%}" />
     <script src="{% static 'reading_record/js/script.js' %}"></script>
-    <link href="{% static 'reading_record/icon/favicon.ico' %}" rel="shortcut icon">
-</head>
-<body id="index">
-
-  <div id="loading">
-    <img class="loading-icon" src="../../static/reading_record/images/logo_RR.png" alt="" />
-    <div id="loading-screen"></div>
-  </div>
-
-  <header>
-    <nav class="header-nav container">
-      <div>
-        <img src="../../static/reading_record/images/logo.png", alt="HOME" width="131" height="52">
-      </div>
-      <div>
-        <a href="{% url 'Login' %}" class="sign-in flex text-lg font-bold ">
-          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><path fill="currentColor" d="M28 4H12a2 2 0 0 0-2 2v7h8.5l-3.38-3.29a1 1 0 0 1 1.41-1.41l5.79 5.79l-5.79 5.79a1 1 0 0 1-1.41-1.41L18.5 15H10v15a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Z" class="clr-i-solid clr-i-solid-path-1"/><path fill="currentColor" d="M10 13H4a1 1 0 0 0-1 1a1 1 0 0 0 1 1h6Z" class="clr-i-solid clr-i-solid-path-2"/><path fill="none" d="M0 0h36v36H0z"/></svg>
-          Sign in</a>
-      </div>
-    </nav>
-  </header>
-
-    <div id="wrap">
-        <div class="main">
-
-            <h1>Let's read a book!</h1>
-            <p class="introduction">This website is for keeping your own reading records.</p>
-        <!-- <p class="btn"><a href="portfolio.html">Sign in</a></p> -->
-          <div class="btn">
-            <a href="{% url 'register' %}" class="btn-c">
-            Create Account
-            </a>
-          </div> 
-
-          <div class="btn">
-            <a href="{% url 'guest_login' %}" class="btn-c">
-            Guest user
-            </a>
-          </div> 
-        </div>
+    <link
+      href="{% static 'reading_record/icon/favicon.ico' %}"
+      rel="shortcut icon"
+    />
+  </head>
+  <body id="index">
+    <div id="loading">
+      <img
+        class="loading-icon"
+        src="../../static/reading_record/images/logo_RR.png"
+        alt=""
+      />
+      <div id="loading-screen"></div>
     </div>
 
-</body>
+    <header>
+      <nav class="header-nav container">
+        <div>
+          <img
+            src="../../static/reading_record/images/logo.png"
+            ,
+            alt="HOME"
+            width="131"
+            height="52"
+          />
+        </div>
+        <div>
+          <a href="{% url 'Login' %}" class="sign-in flex text-lg font-bold">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="36"
+              height="36"
+              viewBox="0 0 36 36"
+            >
+              <path
+                fill="currentColor"
+                d="M28 4H12a2 2 0 0 0-2 2v7h8.5l-3.38-3.29a1 1 0 0 1 1.41-1.41l5.79 5.79l-5.79 5.79a1 1 0 0 1-1.41-1.41L18.5 15H10v15a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Z"
+                class="clr-i-solid clr-i-solid-path-1"
+              />
+              <path
+                fill="currentColor"
+                d="M10 13H4a1 1 0 0 0-1 1a1 1 0 0 0 1 1h6Z"
+                class="clr-i-solid clr-i-solid-path-2"
+              />
+              <path fill="none" d="M0 0h36v36H0z" />
+            </svg>
+            Sign in</a
+          >
+        </div>
+      </nav>
+    </header>
+
+    <div id="wrap">
+      <div class="main">
+        <h1>Let's read a book!</h1>
+        <p class="introduction">
+          This website is for keeping your own reading records.
+        </p>
+        <!-- <p class="btn"><a href="portfolio.html">Sign in</a></p> -->
+        <div class="btn">
+          <a href="{% url 'register' %}" class="btn-c"> Create Account </a>
+        </div>
+
+        <div class="btn">
+          <a href="{% url 'guest_login' %}" class="btn-c"> Guest user </a>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

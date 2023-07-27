@@ -2,66 +2,90 @@
 
 <!DOCTYPE html>
 <html lang="ja" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>{{UserID}} - Record Detail</title>
+    <link rel="stylesheet" href='{% static "reading_record/css/style.css" %}' />
+    <link
+      href="{% static 'reading_record/icon/favicon.ico' %}"
+      rel="shortcut icon"
+    />
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <title>{{UserID}} - Record Detail</title>
-  <link rel="stylesheet" href='{% static "reading_record/css/style.css" %}'/>
-  <link href="{% static 'reading_record/icon/favicon.ico' %}" rel="shortcut icon">
-</head>
+  <body id="home">
+    <header>
+      <nav class="header-nav container">
+        <div>
+          <img
+            src="../../static/reading_record/images/logo.png"
+            ,
+            alt="HOME"
+            width="131"
+            height="52"
+          />
+        </div>
+        <div>
+          <a href="{% url 'home' %}" class="sign-in flex text-lg font-bold">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="36"
+              height="36"
+              viewBox="0 0 24 24"
+            >
+              <g fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="6" r="4" />
+                <path
+                  d="M20 17.5c0 2.485 0 4.5-8 4.5s-8-2.015-8-4.5S7.582 13 12 13s8 2.015 8 4.5Z"
+                />
+              </g>
+            </svg>
+            {{UserID}}</a
+          >
+        </div>
+      </nav>
+    </header>
 
-<body id="home">
+    <h1>Do you really want to delete it?</h1>
 
-  <header>
-    <nav class="header-nav container">
-      <div>
-        <img src="../../static/reading_record/images/logo.png", alt="HOME" width="131" height="52">
+    <div id="delete">
+      <div class="bbtn">
+        <form method="post" class="bbtn-c">
+          {% csrf_token %}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            viewBox="-2 -2 26 26s"
+          >
+            <path
+              fill="currentColor"
+              d="M7 21q-.825 0-1.413-.588T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.588 1.413T17 21H7ZM17 6H7v13h10V6ZM9 17h2V8H9v9Zm4 0h2V8h-2v9ZM7 6v13V6Z"
+            />
+          </svg>
+          <input type="submit" value="delete" />
+        </form>
       </div>
-      <div>
-        <a href="{% url 'home' %}" class="sign-in flex text-lg font-bold ">
-          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="6" r="4"/><path d="M20 17.5c0 2.485 0 4.5-8 4.5s-8-2.015-8-4.5S7.582 13 12 13s8 2.015 8 4.5Z"/></g></svg>
-          {{UserID}}</a>
+      <div class="abtn">
+        <a href="{% url 'detail' pk=record.pk %}" class="abtn-c"> Cancel </a>
       </div>
-    </nav>
-  </header>
+    </div>
 
-  <h1>Do you really want to delete it? </h1>
-
-  <div id="delete">
-    <div class="bbtn">
-      <form method="post"class="bbtn-c" >
-        {% csrf_token %}
-        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="-2 -2 26 26s"><path fill="currentColor" d="M7 21q-.825 0-1.413-.588T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.588 1.413T17 21H7ZM17 6H7v13h10V6ZM9 17h2V8H9v9Zm4 0h2V8h-2v9ZM7 6v13V6Z"/></svg>
-          <input type="submit" value="delete">
-      </form>
-    </div> 
-    <div class="abtn">
-      <a href="{% url 'detail' pk=record.pk %}" class="abtn-c">
-        Cancel
-      </a>
-    </div> 
-  </div>
-
-  <div class="main show_records">
-    <div class="record_list">
-      <h2 class="book_title">{{ record.book_title }}</h2>
-      <div class="record_detail">
-        {% if record.thumbnail_url is not None%}
-          <img class="thumbnail" src="{{ record.thumbnail_url }}">
-        {% else%}
+    <div class="main show_records">
+      <div class="record_list">
+        <h2 class="book_title">{{ record.book_title }}</h2>
+        <div class="record_detail">
+          {% if record.thumbnail_url is not None%}
+          <img class="thumbnail" src="{{ record.thumbnail_url }}" />
+          {% else%}
           <div class="thumbnail gray_thumbnail">
             <p class="thumbnail-none">No data</p>
           </div>
-        {% endif %}
-        <p class="posted_at">{{ record.date }}</p>
-        <p class="pages">{{record.first_page}}p - {{record.final_page}}p</p>
-        <h3 class="impression">
-          <br>{{ record.impression}}
-      </h3>
+          {% endif %}
+          <p class="posted_at">{{ record.date }}</p>
+          <p class="pages">{{record.first_page}}p - {{record.final_page}}p</p>
+          <h3 class="impression"><br />{{ record.impression}}</h3>
+        </div>
       </div>
-      
     </div>
-  </div>
-
-</body>
+  </body>
 </html>

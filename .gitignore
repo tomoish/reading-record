@@ -1,3 +1,6 @@
+# 20230727
+.vscode
+
 # 20230707
 # Exclude files for production environment.
 *prod*

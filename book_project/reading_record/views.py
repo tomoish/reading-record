@@ -9,15 +9,17 @@ from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .forms import AccountForm, AddAccountForm, RecordForm, LoginForm
-from .models import Account, Record
+from .models import Record
 
 
 class IndexView(TemplateView):
     template_name = 'reading_record/index.html'
 
+
 class MyLoginView(LoginView):
     template_name = 'reading_record/login.html'
     form_class = LoginForm
+
 
 class HomeView(LoginRequiredMixin, TemplateView):
     template_name = 'reading_record/home.html'
@@ -28,8 +30,10 @@ class HomeView(LoginRequiredMixin, TemplateView):
         context['UserID'] = self.request.user
         return context
 
+
 class MyLogoutView(LogoutView):
     template_name = 'reading_record/index.html'
+
 
 class ShowRecordsView(LoginRequiredMixin, ListView):
     template_name = 'reading_record/show_records.html'
@@ -40,7 +44,7 @@ class ShowRecordsView(LoginRequiredMixin, ListView):
         context['UserID'] = self.request.user
         context['record_list'] = record_list
         return context
-    
+
     def get_queryset(self):
         query = self.request.GET.get('query')
         if query:
@@ -49,6 +53,7 @@ class ShowRecordsView(LoginRequiredMixin, ListView):
         else:
             record_list = Record.objects.all().order_by('date').reverse()
         return record_list
+
 
 class RecordDetail(LoginRequiredMixin, DetailView):
     model = Record
@@ -60,6 +65,7 @@ class RecordDetail(LoginRequiredMixin, DetailView):
         context['UserID'] = self.request.user
         return context
 
+
 class RecordUpdateView(UpdateView):
     template_name = 'reading_record/record_create.html'
     model = Record
@@ -69,10 +75,11 @@ class RecordUpdateView(UpdateView):
         context = super().get_context_data(**kwargs)
         context['UserID'] = self.request.user
         return context
-    
+
     def get_success_url(self):
         return reverse('detail', kwargs={'pk': self.object.pk})
-    
+
+
 class RecordDeleteView(DeleteView):
     model = Record
     template_name = 'reading_record/record_delete.html'
@@ -83,25 +90,25 @@ class RecordDeleteView(DeleteView):
         context['UserID'] = self.request.user
         return context
 
-class  AccountRegistration(TemplateView):
+
+class AccountRegistration(TemplateView):
 
     def __init__(self):
         self.params = {
-        'AccountCreate':False,
-        'account_form': AccountForm(),
-        'add_account_form': AddAccountForm(),
+            'AccountCreate': False,
+            'account_form': AccountForm(),
+            'add_account_form': AddAccountForm(),
         }
 
-    def get(self,request):
+    def get(self, request):
         self.params['account_form'] = AccountForm()
         self.params['add_account_form'] = AddAccountForm()
         self.params['AccountCreate'] = False
-        return render(request,'reading_record/register.html',context=self.params)
+        return render(request, 'reading_record/register.html', context=self.params)
 
-    def post(self,request):
+    def post(self, request):
         self.params['account_form'] = AccountForm(data=request.POST)
         self.params['add_account_form'] = AddAccountForm(data=request.POST)
-
 
         if self.params['account_form'].is_valid() and self.params['add_account_form'].is_valid():
             account = self.params['account_form'].save()
@@ -118,8 +125,9 @@ class  AccountRegistration(TemplateView):
         else:
             print(self.params['account_form'].errors)
 
-        return render(request,'reading_record/register.html',context=self.params)
-    
+        return render(request, 'reading_record/register.html', context=self.params)
+
+
 class RecordCreateView(CreateView):
     template_name = 'reading_record/record_create.html'
     form_class = RecordForm
@@ -134,7 +142,8 @@ class RecordCreateView(CreateView):
         context = super().get_context_data(**kwargs)
         context['UserID'] = self.request.user
         return context
-    
+
+
 class RecordCreateCompleteView(TemplateView):
     template_name = 'reading_record/record_create_complete.html'
 
@@ -143,9 +152,9 @@ class RecordCreateCompleteView(TemplateView):
         context['UserID'] = self.request.user
         return context
 
+
 class GuestLoginView(View):
-    def get(self,request):
+    def get(self, request):
         user = User.objects.get(username='guest')
         login(request, user, backend='django.contrib.auth.backends.ModelBackend')
         return HttpResponseRedirect(reverse('home'))
-

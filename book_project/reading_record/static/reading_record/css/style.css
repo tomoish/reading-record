@@ -41,10 +41,19 @@ ul {
 a {
   outline: none;
   text-decoration: none;
-  }
-  a:link { color: #000; }
-  a:visited { color: #000; }
-  a:active { color: #000; }
+}
+
+a:link {
+  color: #000;
+}
+
+a:visited {
+  color: #000;
+}
+
+a:active {
+  color: #000;
+}
 
 /* finish reset css */
 
@@ -55,33 +64,40 @@ header
 
 header {
   background-color: rgb(254 226 226);
-  padding: 0.5rem/* 8px */;
+  padding: 0.5rem
+    /* 8px */
+  ;
 }
 
 
 .container {
   width: 100%;
 }
+
 @media (min-width: 640px) {
   .container {
     max-width: 640px;
   }
 }
+
 @media (min-width: 768px) {
   .container {
     max-width: 768px;
   }
 }
+
 @media (min-width: 1024px) {
   .container {
     max-width: 1024px;
   }
 }
+
 @media (min-width: 1280px) {
   .container {
     max-width: 1280px;
   }
 }
+
 @media (min-width: 1536px) {
   .container {
     max-width: 1536px;
@@ -102,10 +118,16 @@ header {
 .sign-in {
   display: flex;
   border-radius: 100vh;
-  padding: 0.5rem/* 8px */;
+  padding: 0.5rem
+    /* 8px */
+  ;
   font-weight: 700;
-  font-size: 1.125rem/* 18px */;
-  line-height: 1.75rem/* 28px */;
+  font-size: 1.125rem
+    /* 18px */
+  ;
+  line-height: 1.75rem
+    /* 28px */
+  ;
 }
 
 .sign-in:hover {
@@ -319,8 +341,10 @@ form {
 }
 
 textarea {
-	width: 276.22px;  /* 横幅 */
-	height: 100px; /* 高さ */
+  width: 276.22px;
+  /* 横幅 */
+  height: 100px;
+  /* 高さ */
 }
 
 
@@ -376,6 +400,7 @@ textarea {
   padding: 2em 0;
   text-align: center;
 }
+
 .form-footer2 {
   font-size: 1em;
   padding: 1em 0;
@@ -409,19 +434,23 @@ my page
   margin-top: 2%;
 }
 
-.my-page-box{
+.my-page-box {
   width: 300px;
   height: 200px;
   margin: 10px;
   background-color: var(--sakura);
-  border-radius: 1rem/* 16px */;
+  border-radius: 1rem
+    /* 16px */
+  ;
   text-align: center;
   font-size: 1.6rem;
   display: table;
 }
 
 .btn-my-page {
-  border-radius: 1rem/* 16px */;
+  border-radius: 1rem
+    /* 16px */
+  ;
   font-size: 1.6rem;
   text-align: center;
   color: #000;
@@ -430,7 +459,7 @@ my page
   vertical-align: middle;
 }
 
-.btn-my-page:hover{
+.btn-my-page:hover {
   color: #fff;
   background: #f596aa;
 }
@@ -625,7 +654,7 @@ search book title
 }
 
 .bbtn {
-  
+
   text-align: center;
   align-items: center;
   width: 50%;
@@ -641,7 +670,7 @@ search book title
   padding: 1.5rem 2rem 1.5rem 2rem;
   /* border-radius: 100vh; */
   color: #000;
-  background-color: rgba(255,0,0,0.5);
+  background-color: rgba(255, 0, 0, 0.5);
   text-decoration: none;
 }
 
@@ -657,7 +686,7 @@ search book title
   padding: 0;
 }
 
-#delete .abtn{
+#delete .abtn {
   margin-bottom: -50px;
 }
 
@@ -677,6 +706,7 @@ search book title
   transition: 0.3s ease-in-out;
   font-weight: 500;
 }
+
 .button004 a:after {
   position: absolute;
   top: 50%;
@@ -688,7 +718,8 @@ search book title
   font-weight: 900;
   transform: translateY(-50%);
 }
+
 .button004 a:hover {
-  background:  #f596aa;
+  background: #f596aa;
   color: #FFF;
 }
