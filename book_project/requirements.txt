@@ -21,6 +21,6 @@ pycparser==2.21
 pyflakes==3.0.1
 requests==2.31.0
 six==1.16.0
-sqlparse==0.4.4
+sqlparse==0.5.3
 typing_extensions==4.6.3
 urllib3==2.0.3
