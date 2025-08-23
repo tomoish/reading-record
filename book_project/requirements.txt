@@ -18,7 +18,7 @@ psycopg2==2.9.10
 psycopg2-binary==2.9.10
 pycodestyle==2.14.0
 pycparser==2.22
-pyflakes==3.0.1
+pyflakes==3.4.0
 requests==2.32.4
 six==1.17.0
 sqlparse==0.5.3
