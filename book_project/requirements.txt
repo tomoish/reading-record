@@ -9,7 +9,7 @@ dj-database-url==0.5.0
 Django==4.2.23
 django-axes==8.0.0
 django-environ==0.4.5
-django-filter==22.1
+django-filter==25.1
 flake8==7.3.0
 gunicorn==23.0.0
 idna==3.10
