@@ -1,0 +1,59 @@
+name: Dependabot Auto-Merge
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  dependabot:
+    runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]'
+    permissions:
+      contents: write
+      pull-requests: write
+      repository-projects: write
+
+    steps:
+      - name: Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v2.2.0
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Auto-merge Dependabot PRs
+        if: steps.metadata.outputs.update-type == 'version-update:semver-patch' || steps.metadata.outputs.update-type == 'version-update:semver-minor'
+        run: |
+          gh pr merge --auto --merge "$PR_URL" --body "🤖 Auto-merged Dependabot PR for ${{ steps.metadata.outputs.dependency-names }}"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+      - name: Auto-merge with co-author
+        if: steps.metadata.outputs.update-type == 'version-update:semver-patch' || steps.metadata.outputs.update-type == 'version-update:semver-minor'
+        run: |
+          # Get the PR number
+          PR_NUMBER="${{ github.event.pull_request.number }}"
+          
+          # Create a merge commit with co-author
+          git config --global user.name "dependabot[bot]"
+          git config --global user.email "49699333+dependabot[bot]@users.noreply.github.com"
+          
+          # Fetch the PR
+          gh pr checkout $PR_NUMBER
+          
+          # Create merge commit with co-author trailer
+          COMMIT_MSG="Merge pull request #$PR_NUMBER from ${{ github.event.pull_request.head.ref }}
+
+${{ github.event.pull_request.title }}
+
+Co-authored-by: Tomohiro Ishibashi <tomoish@users.noreply.github.com>"
+          
+          # Switch to main and merge
+          git checkout main
+          git merge --no-ff "${{ github.event.pull_request.head.ref }}" -m "$COMMIT_MSG"
+          git push origin main
+          
+          # Close the PR
+          gh pr close $PR_NUMBER --comment "✅ Auto-merged with co-author attribution"
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
