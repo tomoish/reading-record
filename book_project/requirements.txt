@@ -1,5 +1,5 @@
 argon2-cffi==25.1.0
-argon2-cffi-bindings==21.2.0
+argon2-cffi-bindings==25.1.0
 asgiref==3.7.2
 bcrypt==3.2.0
 certifi==2025.8.3
@@ -8,8 +8,8 @@ charset-normalizer==3.1.0
 dj-database-url==0.5.0
 Django==4.2.23
 django-axes==8.0.0
-django-environ==0.4.5
-django-filter==22.1
+django-environ==0.12.0
+django-filter==25.1
 flake8==7.3.0
 gunicorn==23.0.0
 idna==3.10
@@ -17,10 +17,10 @@ mccabe==0.7.0
 psycopg2==2.9.10
 psycopg2-binary==2.9.10
 pycodestyle==2.14.0
-pycparser==2.21
+pycparser==2.22
 pyflakes==3.0.1
 requests==2.32.4
 six==1.17.0
 sqlparse==0.5.3
-typing_extensions==4.6.3
+typing_extensions==4.14.1
 urllib3==2.5.0
